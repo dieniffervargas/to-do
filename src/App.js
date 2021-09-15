@@ -44,7 +44,7 @@ const handleChange = (event) => {
           aria-label="newTask"
           
           // adicionar um novo valor ao estado anterior
-          onClick={() => setList([task])}>
+          onClick={() => setList(ant =>[... ant, task])}>
 
           <AddIcon color="primary" fontSize="large" />
         
@@ -55,10 +55,15 @@ const handleChange = (event) => {
       <h4>Lista de Tarefas</h4>
       {/* percorrer a lista .map */}
       <ul>  
-        <li> { list} </li>
+        {list.map(task => 
+        (
+            <li> {task} </li> ))}
+      
       </ul>
     </Container>
   </body>
 }
 
 export default App;
+
+
