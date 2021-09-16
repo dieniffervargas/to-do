@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Header from "./components/Header"
+import ListItem from "./components/ListItem"
 
-//aqui foi
 import { Container, TextField, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Add as AddIcon } from '@material-ui/icons';
@@ -37,12 +37,12 @@ const handleChange = (event) => {
           label="Digite a tarefa"
           variant="outlined"
           fullWidth 
+          autofocus="true"
           onChange={handleChange}
           />
 
         <IconButton
-          aria-label="newTask"
-          
+          aria-label="newTask"   
           // adicionar um novo valor ao estado anterior
           onClick={() => setList(ant =>[... ant, task])}>
 
@@ -58,8 +58,11 @@ const handleChange = (event) => {
         {list.map(task => 
         (
             <li> {task} </li> ))}
-      
       </ul>
+
+{/* Inicio do teste da */} 
+    <ListItem/>
+
     </Container>
   </body>
 }
