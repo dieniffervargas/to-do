@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Header from "./components/Header"
-import ListItem from "./components/ListItem"
+import ItemTodo from "./components/ItemTodo"
+import List from '@mui/material/List';
+//import NewList from "./components/NewList"
 
 import { Container, TextField, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -53,20 +55,16 @@ const handleChange = (event) => {
 
 
       <h4>Lista de Tarefas</h4>
-      {/* percorrer a lista .map */}
-      <ul>  
-        {list.map(task => 
-        (
-            <li> {task} </li> ))}
-      </ul>
+    
 
-{/* Inicio do teste da */} 
-    <ListItem/>
-
+      <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+        {list.map( item => (
+           <ItemTodo item={item}/>
+        ))}
+      </List>
     </Container>
   </body>
 }
 
 export default App;
-
 
