@@ -27,6 +27,13 @@ const handleChange = (event) => {
    setTask(value) 
 }
 
+const Remove = (index) => {
+  console.log("Indice: ", index)
+  console.log(list)
+  list.splice(index, 1)
+  console.log(list)
+}
+
 
   return <body>
     <Header />
@@ -58,8 +65,8 @@ const handleChange = (event) => {
     
 
       <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-        {list.map( item => (
-           <ItemTodo item={item}/>
+        {list.map( (item,index) => (
+           <ItemTodo item={item} index={index} Remove={Remove}/>
         ))}
       </List>
     </Container>

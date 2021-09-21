@@ -9,7 +9,7 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const ItemTodo = ({item}) => {
+const ItemTodo = ({item, index, Remove}) => {
 
   const [checked, setChecked] = React.useState([]);
 
@@ -25,13 +25,16 @@ const ItemTodo = ({item}) => {
 
     setChecked(newChecked);
   };
+
+  const Delete = () => {
+    Remove(index)
+  }
   
- 
     return <ListItem
       key={item}
       secondaryAction={
         <IconButton edge="end" aria-label="comments">
-          <DeleteIcon />
+          <DeleteIcon onClick={Delete} />
         </IconButton>
       }
       disablePadding
