@@ -49,7 +49,7 @@ const ItemTodo = ({item, index, Remove}) => {
             inputProps={{ 'aria-labelledby': `checkbox-list-label- ${item}` }}
           />
         </ListItemIcon>
-        <ListItemText id={item} primary={`Line item: ${item}`} />
+        <ListItemText id={item} primary={item} />
       </ListItemButton>
     </ListItem>
 }
