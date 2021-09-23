@@ -29,9 +29,11 @@ const handleChange = (event) => {
 
 const Remove = (index) => {
   console.log("Indice: ", index)
+  alert("Foi o Delete")
   console.log(list)
   list.splice(index, 1)
   console.log(list)
+  setList(list)
 }
 
 
