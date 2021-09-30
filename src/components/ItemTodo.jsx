@@ -1,16 +1,15 @@
 import React from 'react';
 
+import {ListItem,
+  ListItemButton, 
+  ListItemIcon,
+  ListItemText,
+  Checkbox,
+  IconButton} from '@mui/material/';
 
-import {ListItem} from '@mui/material/';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Checkbox from '@mui/material/Checkbox';
-import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 const ItemTodo = ({item, index, Remove}) => {
-
   const [checked, setChecked] = React.useState([]);
 
   const handleToggle = (value) => () => {
@@ -34,11 +33,10 @@ const ItemTodo = ({item, index, Remove}) => {
       key={item}
       secondaryAction={
         <IconButton edge="end" aria-label="comments">
-          <DeleteIcon onClick={Delete} />
+          <DeleteIcon onClick={Delete} marginRight=" " />
         </IconButton>
       }
-      disablePadding
-    >
+      disablePadding>
       <ListItemButton role={undefined} onClick={handleToggle(item)} dense>
         <ListItemIcon>
           <Checkbox

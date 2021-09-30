@@ -16,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 function App() {
   const classes = useStyles();
 
@@ -27,14 +29,13 @@ const handleChange = (event) => {
    setTask(value) 
 }
 
-const Remove = (index) => {
-  console.log("Indice: ", index)
-  alert("Foi o Delete")
-  console.log(list)
-  list.splice(index, 1)
-  console.log(list)
-  setList(list)
+const handleClick = () => {
+  setList( ant => [...ant, task])
+  setTask("")
 }
+
+const Remove = (index) => {
+  setList(list.filter((item,atual) => atual !== index))}
 
 
   return <body>
@@ -48,14 +49,14 @@ const Remove = (index) => {
           label="Digite a tarefa"
           variant="outlined"
           fullWidth 
-          autofocus="true"
+          value={task}
           onChange={handleChange}
           />
 
         <IconButton
           aria-label="newTask"   
           // adicionar um novo valor ao estado anterior
-          onClick={() => setList(ant =>[... ant, task])}>
+          onClick={handleClick}>
 
           <AddIcon color="primary" fontSize="large" />
         
