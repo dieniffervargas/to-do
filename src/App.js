@@ -22,18 +22,15 @@ function App() {
   const classes = useStyles();
 
   const [listTask, setlistTask] = useState([
-    {
-      task: "Tarefa 0",
-      checked: false
-    },
-    {
-      task: "Tarefa 1",
-      checked: true
-    }
+    // {
+    //   task: "Tarefa 0",
+    //   checked: false
+    // },
+    // {
+    //   task: "Tarefa 1",
+    //   checked: true
+    // }
   ]);
-
-
-
 
   const [task, setTask] = useState("");
 
@@ -43,7 +40,12 @@ const handleChange = (event) => {
 }
 
 const handleClick = () => {
-  setlistTask( ant => [...ant, task])
+  const newtask = {
+    task,
+    checked: false,
+  }
+  
+  setlistTask(ant => [...ant, newtask])
   setTask("")
 }
 
@@ -88,7 +90,7 @@ const Remove = (index) => {
               Remove={Remove}/>
         ))}
       </List>
-      { <h5> --- {listTask.length} Tarefas --- </h5>}
+      { <h5 align="center">  {listTask.length} Tarefas </h5>}
       {/* { listTask.length <= 0 && <p> --- {listTask.length} tarefas --- </p>} */}
     </Container>
   </body>
