@@ -21,7 +21,20 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
 
-  const [list, setList] = useState([]);
+  const [listTask, setlistTask] = useState([
+    {
+      task: "Tarefa 0",
+      checked: false
+    },
+    {
+      task: "Tarefa 1",
+      checked: true
+    }
+  ]);
+
+
+
+
   const [task, setTask] = useState("");
 
 const handleChange = (event) => {  
@@ -30,12 +43,12 @@ const handleChange = (event) => {
 }
 
 const handleClick = () => {
-  setList( ant => [...ant, task])
+  setlistTask( ant => [...ant, task])
   setTask("")
 }
 
 const Remove = (index) => {
-  setList(list.filter((item,atual) => atual !== index))}
+  setlistTask(listTask.filter((item,atual) => atual !== index))}
 
 
   return <body>
@@ -64,14 +77,19 @@ const Remove = (index) => {
       </form>
 
 
-      <h4>Lista de Tarefas</h4>
+     {listTask.length > 0 &&  <h4>Tarefas para fazer</h4>}
     
-
       <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-        {list.map( (item,index) => (
-           <ItemTodo item={item} index={index} Remove={Remove}/>
+        {listTask.map( (item,index) => (
+           <ItemTodo 
+              task={item.task} 
+              checked={item.checked} 
+              index={index} 
+              Remove={Remove}/>
         ))}
       </List>
+      { <h5> --- {listTask.length} Tarefas --- </h5>}
+      {/* { listTask.length <= 0 && <p> --- {listTask.length} tarefas --- </p>} */}
     </Container>
   </body>
 }

@@ -9,20 +9,20 @@ import {ListItem,
 
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const ItemTodo = ({item, index, Remove}) => {
-  const [checked, setChecked] = React.useState([]);
+const ItemTodo = ({task, checked, index, Remove}) => {
+  //const [checked, setChecked] = React.useState([]);
 
   const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+  //   const currentIndex = checked.indexOf(value);
+  //   const newChecked = [...checked];
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
+  //   if (currentIndex === -1) {
+  //     newChecked.push(value);
+  //   } else {
+  //     newChecked.splice(currentIndex, 1);
+  //   }
 
-    setChecked(newChecked);
+  //   //setChecked(newChecked);
   };
 
   const Delete = () => {
@@ -30,24 +30,27 @@ const ItemTodo = ({item, index, Remove}) => {
   }
   
     return <ListItem
-      key={item}
+      key={task}
       secondaryAction={
         <IconButton edge="end" aria-label="comments">
           <DeleteIcon onClick={Delete} marginRight=" " />
         </IconButton>
       }
       disablePadding>
-      <ListItemButton role={undefined} onClick={handleToggle(item)} dense>
+      <ListItemButton 
+          role={undefined} 
+          onClick={( value ) => handleToggle( value ) } 
+          dense>
         <ListItemIcon>
           <Checkbox
             edge="start"
-            checked={checked.indexOf(item) !== -1}
+            checked={checked}
             tabIndex={-1}
             disableRipple
-            inputProps={{ 'aria-labelledby': `checkbox-list-label- ${item}` }}
+            inputProps={{ 'aria-labelledby': `checkbox-list-label- ${task}` }}
           />
         </ListItemIcon>
-        <ListItemText id={item} primary={item} />
+        <ListItemText id={task} primary={task} />
       </ListItemButton>
     </ListItem>
 }
