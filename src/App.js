@@ -2,12 +2,10 @@ import React, { useState } from 'react'
 import Header from "./components/Header"
 import ItemTodo from "./components/ItemTodo"
 import List from '@mui/material/List';
-//import NewList from "./components/NewList"
 
 import { Container, TextField, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Add as AddIcon } from '@material-ui/icons';
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,21 +14,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 function App() {
   const classes = useStyles();
 
-  const [listTask, setlistTask] = useState([
-    // {
-    //   task: "Tarefa 0",
-    //   checked: false
-    // },
-    // {
-    //   task: "Tarefa 1",
-    //   checked: true
-    // }
-  ]);
+  const [listTask, setlistTask] = useState([ ]);
 
   const [task, setTask] = useState("");
 
@@ -51,6 +38,23 @@ const handleClick = () => {
 
 const Remove = (index) => {
   setlistTask(listTask.filter((item,atual) => atual !== index))}
+
+const checkBox = (checked,index) => {
+  const newList = listTask.map( (item,indexAtual) => {
+    let atual = item.checked
+
+    if(indexAtual == index){
+      atual = checked
+    }
+
+    return{
+      ...item,
+      checked: atual
+    }
+
+  })
+  setlistTask(newList)
+}
 
 
   return <body>
@@ -87,11 +91,11 @@ const Remove = (index) => {
               task={item.task} 
               checked={item.checked} 
               index={index} 
-              Remove={Remove}/>
+              Remove={Remove}
+              checkBox={checkBox}/>
         ))}
       </List>
-      { <h5 align="center">  {listTask.length} Tarefas </h5>}
-      {/* { listTask.length <= 0 && <p> --- {listTask.length} tarefas --- </p>} */}
+      { <h5 color="primary" align="center" >  {listTask.length} Tarefas </h5>}
     </Container>
   </body>
 }

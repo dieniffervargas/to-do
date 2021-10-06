@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {ListItem,
   ListItemButton, 
@@ -9,21 +9,15 @@ import {ListItem,
 
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const ItemTodo = ({task, checked, index, Remove}) => {
-  //const [checked, setChecked] = React.useState([]);
+const ItemTodo = ({task, checked, index, Remove, checkBox}) => {
+  const [checkedAtual, setCheckedAtual] = useState(checked);
 
-  const handleToggle = (value) => () => {
-  //   const currentIndex = checked.indexOf(value);
-  //   const newChecked = [...checked];
-
-  //   if (currentIndex === -1) {
-  //     newChecked.push(value);
-  //   } else {
-  //     newChecked.splice(currentIndex, 1);
-  //   }
-
-  //   //setChecked(newChecked);
+  const handleToggle = () => {
+   
+    checkBox(!checked,index)
   };
+
+
 
   const Delete = () => {
     Remove(index)
@@ -39,7 +33,7 @@ const ItemTodo = ({task, checked, index, Remove}) => {
       disablePadding>
       <ListItemButton 
           role={undefined} 
-          onClick={( value ) => handleToggle( value ) } 
+          onClick={handleToggle} 
           dense>
         <ListItemIcon>
           <Checkbox
