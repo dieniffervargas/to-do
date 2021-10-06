@@ -21,24 +21,22 @@ function App() {
 
   const [task, setTask] = useState("");
 
-const handleChange = (event) => {  
-  const { value } = event.target
-   setTask(value) 
-}
+  const handleChange = (event) => {  
+    const { value } = event.target
+    setTask(value) 
+  }
 
 const handleClick = () => {
   const newtask = {
     task,
     checked: false,
-  }
-  
+  } 
   setlistTask(ant => [...ant, newtask])
   setTask("")
 }
-
 const Remove = (index) => {
-  setlistTask(listTask.filter((item,atual) => atual !== index))}
-
+  setlistTask(listTask.filter((item,atual) => atual !== index))
+}
 const checkBox = (checked,index) => {
   const newList = listTask.map( (item,indexAtual) => {
     let atual = item.checked
@@ -51,15 +49,14 @@ const checkBox = (checked,index) => {
       ...item,
       checked: atual
     }
-
   })
   setlistTask(newList)
 }
 
-
   return <body>
     <Header />
     <Container maxWidth="md">
+      
       <form className={classes.root}>
         <TextField
           multiline
@@ -69,19 +66,14 @@ const checkBox = (checked,index) => {
           variant="outlined"
           fullWidth 
           value={task}
-          onChange={handleChange}
-          />
-
+          onChange={handleChange}/>
         <IconButton
           aria-label="newTask"   
           // adicionar um novo valor ao estado anterior
           onClick={handleClick}>
-
           <AddIcon color="primary" fontSize="large" />
-        
         </IconButton>
       </form>
-
 
      {listTask.length > 0 &&  <h4>Tarefas para fazer</h4>}
     
@@ -101,4 +93,3 @@ const checkBox = (checked,index) => {
 }
 
 export default App;
-
