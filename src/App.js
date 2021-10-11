@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from "./components/Header"
 import ItemTodo from "./components/ItemTodo"
 import List from '@mui/material/List';
@@ -18,8 +18,19 @@ function App() {
   const classes = useStyles();
 
   const [listTask, setlistTask] = useState([ ]);
-
   const [task, setTask] = useState("");
+
+  useEffect( () => {
+    const prevListask = localStorage.getItem('task@to-do')
+    if(prevListask) {
+      setlistTask(JSON.parse(prevListask));
+  }
+
+  }, [])
+
+  useEffect( () => {
+    localStorage.setItem('task@to-do', JSON.stringify(listTask));
+  }, [listTask])
 
   const handleChange = (event) => {  
     const { value } = event.target
@@ -34,6 +45,7 @@ const handleClick = () => {
   setlistTask(ant => [...ant, newtask])
   setTask("")
 }
+
 const Remove = (index) => {
   setlistTask(listTask.filter((item,atual) => atual !== index))
 }
