@@ -23,9 +23,7 @@ function App() {
   useEffect( () => {
     const prevListask = localStorage.getItem('task@to-do')
     if(prevListask) {
-      setlistTask(JSON.parse(prevListask));
-  }
-
+      setlistTask(JSON.parse(prevListask));}
   }, [])
 
   useEffect( () => {
@@ -37,32 +35,32 @@ function App() {
     setTask(value) 
   }
 
-const handleClick = () => {
-  const newtask = {
-    task,
-    checked: false,
-  } 
+  const handleClick = () => {
+    const newtask = {
+      task,
+      checked: false,
+    } 
   setlistTask(ant => [...ant, newtask])
   setTask("")
-}
+  }
 
-const Remove = (index) => {
-  setlistTask(listTask.filter((item,atual) => atual !== index))
-}
-const checkBox = (checked,index) => {
-  const newList = listTask.map( (item,indexAtual) => {
-    let atual = item.checked
+  const Remove = (index) => {
+    setlistTask(listTask.filter((item,atual) => atual !== index))
+  }
 
-    if(indexAtual == index){
-      atual = checked
-    }
+  const checkBox = (checked,index) => {
+    const newList = listTask.map( (item,indexAtual) => {
+      let atual = item.checked
+
+      if(indexAtual == index){
+        atual = checked}
 
     return{
       ...item,
       checked: atual
     }
   })
-  setlistTask(newList)
+    setlistTask(newList)
 }
 
   return <body>

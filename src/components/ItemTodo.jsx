@@ -10,7 +10,6 @@ import {
 import DeleteIcon from '@material-ui/icons/Delete';
 
 const ItemTodo = ({task, checked, index, Remove, checkBox}) => {
-  
   const handleToggle = () => {
     checkBox(!checked,index)
   }
